@@ -1,6 +1,7 @@
 const path = require('path');
 const defaultWebpack = require('./webpack.config');
 const { merge } = require('webpack-merge');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = merge(defaultWebpack, {
     mode: 'development',
@@ -9,6 +10,9 @@ module.exports = merge(defaultWebpack, {
         filename: 'main.js',
         path: path.resolve(__dirname, 'dist')
     },
+    plugins: [new HtmlWebpackPlugin({
+        template: './src/template.html'
+    })],
     module: {
         rules: [
             {
